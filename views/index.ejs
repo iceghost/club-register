@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Đăng ký</title>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <script src="jquery-3.4.1.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <form class="w3-container">
+      <h3>Đăng ký tên</h3>
+      <div class="w3-row">
+        <div class="w3-half">
+          <input type="text" placeholder="Tên" class="w3-input" id="name-input"/>
+        </div>
+        <div class="w3-half">
+          <input type="button" class="w3-button w3-red" value="Gửi" id="submit-btn"/>
+        </div>
+      </div>
+    </form>
+    <div class="w3-container">
+      <h3>Danh sách người đã đăng ký:</h3>
+      <ol id="names-list"></ol>
+    </div>
+  </body>
+</html>
