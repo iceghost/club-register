@@ -10,20 +10,38 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <form class="w3-container">
-      <h3>Đăng ký tên</h3>
-      <div class="w3-row">
-        <div class="w3-half">
-          <input type="text" placeholder="Tên" class="w3-input" id="name-input"/>
+    <div class="w3-container w3-row">
+      <div class="w3-half w3-card">
+        <div class="w3-container w3-red">
+          <h2>Đăng ký CLB</h2>
         </div>
-        <div class="w3-half">
-          <input type="button" class="w3-button w3-red" value="Gửi" id="submit-btn"/>
-        </div>
+        <form class="w3-container">
+          <p>
+            <input type="text" placeholder="Tên" class="w3-input" id="name-input"/>
+          </p>
+          <p>
+            <input type="text" placeholder="Lớp" class="w3-input" id="class-input"/>
+          </p>
+          <p>
+            <input type="text" placeholder="Ngày tháng năm sinh" class="w3-input" id="birth-input"/>
+          </p>
+          <p>
+            <input type="text" placeholder="Số điện thoại" class="w3-input" id="phone-input"/>
+          </p>
+          <p>
+            <input type="button" class="w3-button w3-red" value="Gửi" id="submit-btn"/>
+          </p>
+        </form>
       </div>
-    </form>
-    <div class="w3-container">
-      <h3>Danh sách người đã đăng ký:</h3>
-      <ol id="names-list"></ol>
+      <div class="w3-container w3-half">
+        <h2 class="w3-text-red">Danh sách người đăng ký:</h2>
+        <table class="w3-card w3-table w3-bordered w3-centered" id="members-list">
+          <tr class="w3-red">
+            <th>Tên</th>
+            <th>Lớp</th>
+          </tr>
+        </table>
+      </div>
     </div>
   </body>
 </html>

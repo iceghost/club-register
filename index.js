@@ -16,37 +16,32 @@ const client = new Client({
 
 client.connect();
 
-var names = [];
+var members = [];
 client.query('SELECT * FROM clubmembers', (err, res) => {
   if (err) throw err;
   res.rows.forEach((row, index) => {
     // console.log('pushing ' + row.name);
-    names.push(row.name);
+    members.push({name: row.name, class: row.class});
   })
 });
 
 
 
 io.on('connection', function(socket){
-  console.log("Connection from " + socket.id);
+  // console.log("Connection from " + socket.id);
 
-  socket.on("send-name", (name) => {
-    // console.log(name + " received");
-
-
-    client.query('INSERT INTO clubmembers (name) VALUES ($1)', [name], (err, res) => {
-
+  socket.on("send-member", (member) => {
+    client.query('INSERT INTO clubmembers (name, class, birthday, phone) VALUES ($1, $2, $3, $4)', [member.name, member.class, member.birthday, member.phone], (err, res) => {
       if (err) throw err;
-      console.log(res);
     });
-    // console.log(names)
-    names.push(name)
-    io.sockets.emit("update-new-name", name)
+
+    members.push({name: member.name, class: member.class});
+    console.log(member)
+    io.sockets.emit("update-new-member", member);
   });
 
-  socket.on("update-old-names", () => {
-    console.log(names)
-    socket.emit("update-old-names", names);
+  socket.on("update-old-members", () => {
+    socket.emit("update-old-members", members);
   })
 });
 
